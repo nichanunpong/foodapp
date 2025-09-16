@@ -1,0 +1,42 @@
+.itemList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.errorContainer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8d7da;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.errorMessage {
+  color: #dc3545;
+  margin-bottom: 15px;
+}
+
+.retryButton {
+  background-color: #29bb89;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.retryButton:hover {
+  background-color: #238f6b;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin: 10px 0;
+}

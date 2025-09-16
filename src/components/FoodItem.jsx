@@ -1,9 +1,29 @@
-import styles from "./fooditem.module.css";
+import { useCallback } from 'react';
+import styles from './fooditem.module.css';
+
 export default function FoodItem({ food, setFoodId }) {
-  console.log(food);
+  const handleKeyPress = useCallback(
+    (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setFoodId(food.id);
+      }
+    },
+    [food.id, setFoodId]
+  );
+
   return (
-    <div className={styles.itemContainer}>
-      <img className={styles.itemImage} src={food.image} alt="" />
+    <div
+      className={styles.itemContainer}
+      role='article'
+      tabIndex={0}
+      onKeyPress={handleKeyPress}>
+      <img
+        className={styles.itemImage}
+        src={food.image}
+        alt={`${food.title} recipe`}
+        loading='lazy'
+      />
       <div className={styles.itemContent}>
         <p className={styles.itemName}>{food.title}</p>
       </div>
@@ -11,8 +31,8 @@ export default function FoodItem({ food, setFoodId }) {
         <button
           onClick={() => setFoodId(food.id)}
           className={styles.itemButton}
-        >
-          Vuew Recipe
+          aria-label={`View recipe for ${food.title}`}>
+          View Recipe
         </button>
       </div>
     </div>
